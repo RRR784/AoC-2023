@@ -1,0 +1,28 @@
+You might visit a cell with a lower value, but becuase it has already travelled 2 or 3 times in that direction, it cannot necessarily take the overall optimum path
+
+Therefore it is possible to reach a node that you have travelled to already with a higher value, but a lower counter, and it still be preferable.
+
+for example a low value path might be a straight line and then the next step has to turn on to a less preferable path
+but you might enter the same cell from a turn and be able to continue the straight line which will ultimately lead to a lower path cost
+
+so each cell needs to have multiple values associated with it, the value on turn 1, value on turn 2, and value on turn 3
+
+and if you reach a cell with a lower cost AND a lower turn value you overwrite the higher one
+
+if you reach a cell with a higher cost and lower turn value, you keep both
+
+if you reah a cell with a higher cost and a higher turn value then you discard that branch
+
+and also since you cannot back track, the direction which you enter the cell is relevant
+since each time you enter the cell from another direction, there is one additional possible outlet direction you can take, but once you enter the same cell from two inlet directions then all outlet directions have been evaluated
+
+therefore it's possible that you enter a cell with a higher value and a higher move count but it's from a new direction that provides a better path??
+	i'm not so sure. it means that you are back-tracking
+	but it seems important though?
+	it only seems important because it prevents you from doubling back one time to get 3 more forward moves
+
+well you can still loop back then, which might be required:
+  v<
+>>>^>>
+this is the only way to travel 6 steps in a single direction, even if the total cost might be higher.
+
